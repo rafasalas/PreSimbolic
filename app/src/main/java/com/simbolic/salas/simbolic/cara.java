@@ -2,6 +2,9 @@ package com.simbolic.salas.simbolic;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
+
+import java.util.Random;
 
 /**
  * Created by salas on 27/07/2016.
@@ -36,27 +39,32 @@ public class cara {
     }
 
     public void carga(){
-        pelo.loadsvg("hair_5");
+        Random rnd=new Random();
 
-        cejas.loadsvg("eyebrow_10");
+        Log.v("nombre", "hair_"+ Integer.toString(rnd.nextInt(5)));
 
-        ojos.loadsvg("eyes_4");
+        pelo.loadsvg("hair_"+ Integer.toString(rnd.nextInt(5)));
 
-        nariz.loadsvg("nose_3");
+        cejas.loadsvg("eyebrow_"+ Integer.toString(rnd.nextInt(5)));
 
-        boca.loadsvg("mouth_5");
+        ojos.loadsvg("eyes_"+ Integer.toString(rnd.nextInt(6)));
 
-        mandibula.loadsvg("faces_4");
+        nariz.loadsvg("nose_"+ Integer.toString(rnd.nextInt(4)));
+
+        boca.loadsvg("mouth_"+ Integer.toString(rnd.nextInt(6)));
+
+        mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(5)));
 
     }
 
     public void dibujar(Canvas canvas){
+        mandibula.dibujar(canvas);
+
         pelo.dibujar(canvas);
         cejas.dibujar(canvas);
         ojos.dibujar(canvas);
         nariz.dibujar(canvas);
         boca.dibujar(canvas);
-        mandibula.dibujar(canvas);
 
     }
 
