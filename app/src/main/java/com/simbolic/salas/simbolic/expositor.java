@@ -16,10 +16,10 @@ import android.view.View;
 
 
 public class expositor extends View {
-            partecara pelo;
+            cara Cara1;
     public expositor(Context context){
             super(context);
-        pelo=new partecara("pelo1", context);
+        Cara1=new cara(context);
 
     }
     @Override
@@ -28,12 +28,13 @@ public class expositor extends View {
 
         int width=getWidth();
         int height=getHeight();
-        pelo.loadsvg("pelo1");
-        pelo.resize(width);
+        Cara1.carga();
+        Cara1.resize(width);
 
 
         canvas.drawColor(0xFFFFFFFF);
-        pelo.dibujar(canvas);
+        Cara1.dibujar(canvas);
+
         update();
         invalidate();
     }

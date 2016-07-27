@@ -15,7 +15,7 @@ public class partecara {
     int draw_height, draw_width;
     Rect superficie;
     Resources res;
-    public partecara(String nombre, Context context){
+    public partecara(Context context){
        res = context.getResources();
 
         superficie=new Rect();
