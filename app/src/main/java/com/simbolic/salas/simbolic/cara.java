@@ -21,19 +21,19 @@ public class cara {
 
     }
 
-    public void resize (int width){
+    public void resize (int width, int height, double scale){
 
-        pelo.resize(width);
+        pelo.resize(width, height,scale);
 
-        cejas.resize(width);
+        cejas.resize(width, height,scale);
 
-        ojos.resize(width);
+        ojos.resize(width, height,scale);
 
-        nariz.resize(width);
+        nariz.resize(width, height,scale);
 
-        boca.resize(width);
+        boca.resize(width, height,scale);
 
-        mandibula.resize(width);
+        mandibula.resize(width, height,scale);
 
 
     }

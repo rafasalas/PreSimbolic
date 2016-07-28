@@ -29,11 +29,25 @@ public class partecara {
         int id=res.getIdentifier(nombre, "drawable", "com.simbolic.salas.simbolic");
 
         drawable = (VectorDrawable) res.getDrawable(id, null);}
-    public void resize (int width){
+
+
+
+    public void resize (int width, int height, double scale){
+        double mainX, mainY, newW, newH;
+
         draw_height=drawable.getIntrinsicHeight();
         draw_width=drawable.getIntrinsicWidth();
-        float rel=((float)width/(float)draw_width);
-        superficie.set(0,0,width, (int)(draw_height*rel));
+
+        newW=width*scale;
+        mainX=(width*((1-scale)/2));
+        float rel=((float)newW/(float)draw_width);
+        newW=newW+mainX;
+
+
+        newH=rel*draw_height;
+        mainY=(height-newH)/2;
+        newH=newH+mainY;
+        superficie.set((int)mainX,(int)mainY,(int)newW, (int)(newH));
         drawable.setBounds(superficie);
 
 
