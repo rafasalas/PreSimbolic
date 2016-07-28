@@ -67,5 +67,13 @@ public class cara {
         boca.dibujar(canvas);
 
     }
+    public void alfa(int op){
+        mandibula.alfa(op);
+        pelo.alfa(op);
+        cejas.alfa(op);
+        ojos.alfa(op);
+        nariz.alfa(op);
+        boca.alfa(op);
 
+    }
 }

@@ -17,20 +17,26 @@ import android.view.View;
 
 public class expositor extends View {
             cara Cara1;
-    int contador;
+    int contador,opacidad;
     public expositor(Context context){
             super(context);
         Cara1=new cara(context);
         Cara1.carga();
         contador=0;
+        opacidad=0;
     }
     @Override
 
     protected void onDraw(Canvas canvas){
         if (contador==80){
             contador=0;
+            opacidad=0;
             Cara1.carga();
+            Cara1.alfa(0);
         }
+        if (contador<25){opacidad=opacidad+10;}
+        if (contador==25){opacidad=255;}
+        if (contador>55){opacidad=opacidad-10;}
         int width=getWidth();
         int height=getHeight();
 
@@ -38,6 +44,7 @@ public class expositor extends View {
 
 
         canvas.drawColor(0xFFFFFFFF);
+        Cara1.alfa(opacidad);
         Cara1.dibujar(canvas);
 
         update();

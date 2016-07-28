@@ -42,5 +42,5 @@ public class partecara {
         drawable.draw(canvas);
 
     }
-
+    public void alfa (int opacity){drawable.setAlpha(opacity);}
 }
