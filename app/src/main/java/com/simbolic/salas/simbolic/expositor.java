@@ -49,7 +49,7 @@ public class expositor extends View {
 
 
        // canvas.drawColor(0xFFFFFFFF);
-        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width - (width / 4), 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));
         Cara1.alfa(opacidad);
         canvas.drawPaint(fondopaint);
         Cara1.dibujar(canvas);
