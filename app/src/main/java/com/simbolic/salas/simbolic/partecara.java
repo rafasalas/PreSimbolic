@@ -3,6 +3,7 @@ package com.simbolic.salas.simbolic;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.VectorDrawable;
 
@@ -52,8 +53,28 @@ public class partecara {
 
 
     }
+    public void resize (int width, int height, double scale, int Xini, int Yini){
+        double mainX, mainY, newW, newH;
+
+        draw_height=drawable.getIntrinsicHeight();
+        draw_width=drawable.getIntrinsicWidth();
+
+        newW=width*scale;
+        mainX=Xini;
+        float rel=((float)newW/(float)draw_width);
+        newW=newW+mainX;
+
+
+        newH=rel*draw_height;
+        mainY=Yini;
+        newH=newH+mainY;
+        superficie.set((int)mainX,(int)mainY,(int)newW, (int)(newH));
+        drawable.setBounds(superficie);
+
+
+    }
     public void dibujar(Canvas canvas){
-        drawable.draw(canvas);
+      drawable.draw(canvas);
 
     }
     public void alfa (int opacity){drawable.setAlpha(opacity);}

@@ -19,41 +19,49 @@ import android.view.View;
 
 
 public class expositor extends View {
+            partecara Globo;
             cara Cara1;
-    int contador,opacidad;
+    int contador,opacidad, intervalo, transicion, incremento;
     public expositor(Context context){
             super(context);
         Cara1=new cara(context);
+        Globo=new partecara (context);
         Cara1.carga();
+        Globo.loadsvg("globo_1");
         contador=0;
         opacidad=0;
+        intervalo=250;
+        transicion=50;
+        incremento=(int)((float)255/(float)transicion);
     }
     @Override
 
     protected void onDraw(Canvas canvas){
         Paint fondopaint;
         fondopaint=new Paint();
-        if (contador==80){
+        if (contador==intervalo){
             contador=0;
             opacidad=0;
             Cara1.carga();
-            Cara1.alfa(0);
+            opacidad=0;
         }
-        if (contador<25){opacidad=opacidad+10;}
-        if (contador==25){opacidad=255;}
-        if (contador>55){opacidad=opacidad-10;}
+        if (contador<transicion){opacidad=opacidad+incremento;}
+        if (contador==transicion){opacidad=255;}
+        if (contador>intervalo-transicion){opacidad=opacidad-incremento;}
         int width=getWidth();
         int height=getHeight();
 
         Cara1.resize(width, height,0.5);
-
+        Globo.resize(width,height,.45,600,100);
 
        // canvas.drawColor(0xFFFFFFFF);
         fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));
         Cara1.alfa(opacidad);
+        Globo.alfa(opacidad);
         canvas.drawPaint(fondopaint);
-        Cara1.dibujar(canvas);
 
+        Cara1.dibujar(canvas);
+        Globo.dibujar(canvas);
         update();
         invalidate();
         contador++;
