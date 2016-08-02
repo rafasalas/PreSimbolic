@@ -52,7 +52,7 @@ public class expositor extends View {
         int height=getHeight();
 
         Cara1.resize(width, height,0.5);
-        Globo.resize(width,height,.45,600,100);
+        Globo.resize(width,height,.45,.5,.1);
 
        // canvas.drawColor(0xFFFFFFFF);
         fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));

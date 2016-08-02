@@ -53,20 +53,20 @@ public class partecara {
 
 
     }
-    public void resize (int width, int height, double scale, int Xini, int Yini){
+    public void resize (int width, int height, double scale, double Xini, double Yini){
         double mainX, mainY, newW, newH;
 
         draw_height=drawable.getIntrinsicHeight();
         draw_width=drawable.getIntrinsicWidth();
 
         newW=width*scale;
-        mainX=Xini;
+        mainX=Xini*width;
         float rel=((float)newW/(float)draw_width);
         newW=newW+mainX;
 
 
         newH=rel*draw_height;
-        mainY=Yini;
+        mainY=Yini*width;
         newH=newH+mainY;
         superficie.set((int)mainX,(int)mainY,(int)newW, (int)(newH));
         drawable.setBounds(superficie);
