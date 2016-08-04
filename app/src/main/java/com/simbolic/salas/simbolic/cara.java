@@ -41,7 +41,7 @@ public class cara {
     public void carga(){
         Random rnd=new Random();
 
-        Log.v("nombre", "hair_"+ Integer.toString(rnd.nextInt(5)));
+        //Log.v("nombre", "hair_"+ Integer.toString(rnd.nextInt(5)));
 
         pelo.loadsvg("hair_"+ Integer.toString(rnd.nextInt(5)));
 

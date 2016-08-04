@@ -20,13 +20,16 @@ import android.view.View;
 
 public class expositor extends View {
             partecara Globo;
+            mensaje Mensaje;
             cara Cara1;
     int contador,opacidad, intervalo, transicion, incremento;
     public expositor(Context context){
             super(context);
         Cara1=new cara(context);
         Globo=new partecara (context);
+        Mensaje=new mensaje(context);
         Cara1.carga();
+        Mensaje.carga();
         Globo.loadsvg("globo_1");
         contador=0;
         opacidad=0;
@@ -43,6 +46,7 @@ public class expositor extends View {
             contador=0;
             opacidad=0;
             Cara1.carga();
+            Mensaje.carga();
             opacidad=0;
         }
         if (contador<transicion){opacidad=opacidad+incremento;}
@@ -53,15 +57,19 @@ public class expositor extends View {
 
         Cara1.resize(width, height,0.5);
         Globo.resize(width,height,.45,.5,.1);
+        Mensaje.resize(width, height,.15,.65,.2
+        );
 
        // canvas.drawColor(0xFFFFFFFF);
         fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));
         Cara1.alfa(opacidad);
         Globo.alfa(opacidad);
+        Mensaje.alfa(opacidad);
         canvas.drawPaint(fondopaint);
 
         Cara1.dibujar(canvas);
         Globo.dibujar(canvas);
+        Mensaje.dibujar(canvas);
         update();
         invalidate();
         contador++;
