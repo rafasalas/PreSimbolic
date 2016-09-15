@@ -59,7 +59,7 @@ public class cara {
 
         mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(9)));
         mano_der.loadsvg("hand_right_"+ Integer.toString(rnd.nextInt(3)));
-        mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(9)));
+        mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(3)));
         cuello.loadsvg("neck_"+ Integer.toString(rnd.nextInt(1)));
     }
 
