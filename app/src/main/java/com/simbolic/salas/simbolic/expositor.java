@@ -55,7 +55,7 @@ public class expositor extends View {
         int width=getWidth();
         int height=getHeight();
 
-        Cara1.resize(width, height,0.5);
+        Cara1.resize(width, height,0.75);
         Globo.resize(width,height,.45,.5,.1);
         Mensaje.resize(width, height,.15,.65,.2
         );

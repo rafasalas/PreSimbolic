@@ -10,7 +10,7 @@ import java.util.Random;
  * Created by salas on 27/07/2016.
  */
 public class cara {
-    partecara pelo,cejas,ojos, nariz, boca, mandibula, mano_izq, mano_der, cuello;
+    partecara pelo,cejas,ojos, nariz, boca, mandibula, mano_izq, mano_der, aro;
     public cara(Context context){
         pelo=new partecara(context);
         cejas=new partecara(context);
@@ -20,7 +20,7 @@ public class cara {
         mandibula=new partecara(context);
         mano_izq=new partecara(context);
         mano_der=new partecara(context);
-        cuello=new partecara(context);
+       aro=new partecara(context);
     }
 
     public void resize (int width, int height, double scale){
@@ -38,7 +38,7 @@ public class cara {
         mandibula.resize(width, height,scale);
         mano_izq.resize(width, height,scale);
        mano_der.resize(width, height,scale);
-       cuello.resize(width, height,scale);
+      aro.resize(width, height,scale);
 
     }
 
@@ -60,12 +60,12 @@ public class cara {
         mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(9)));
         mano_der.loadsvg("hand_right_"+ Integer.toString(rnd.nextInt(3)));
         mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(3)));
-        cuello.loadsvg("neck_"+ Integer.toString(rnd.nextInt(1)));
+       aro.loadsvg("aro");
     }
 
     public void dibujar(Canvas canvas){
 
-        cuello.dibujar(canvas);
+
         mandibula.dibujar(canvas);
         pelo.dibujar(canvas);
         cejas.dibujar(canvas);
@@ -74,10 +74,11 @@ public class cara {
         boca.dibujar(canvas);
         mano_izq.dibujar(canvas);
         mano_der.dibujar(canvas);
+        aro.dibujar(canvas);
 
     }
     public void alfa(int op){
-        cuello.alfa(op);
+       // cuello.alfa(op);
         mandibula.alfa(op);
         pelo.alfa(op);
         cejas.alfa(op);
