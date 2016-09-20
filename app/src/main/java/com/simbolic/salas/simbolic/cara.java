@@ -87,6 +87,6 @@ public class cara {
         boca.alfa(op);
         mano_izq.alfa(op);
         mano_der.alfa(op);
-
+        aro.alfa(op);
     }
 }

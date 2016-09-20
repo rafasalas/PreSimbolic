@@ -56,8 +56,8 @@ public class expositor extends View {
         int height=getHeight();
 
         Cara1.resize(width, height,0.75);
-        Globo.resize(width,height,.45,.5,.1);
-        Mensaje.resize(width, height,.15,.65,.2
+        Globo.resize(width,height,.45,.45,.15);
+        Mensaje.resize(width, height,.15,.60,.25
         );
 
        // canvas.drawColor(0xFFFFFFFF);
