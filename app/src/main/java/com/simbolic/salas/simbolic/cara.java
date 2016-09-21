@@ -2,6 +2,7 @@ package com.simbolic.salas.simbolic;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.util.Log;
 
 import java.util.Random;
@@ -91,14 +92,69 @@ public class cara {
     }
     public void colorize(int opacity, int r, int g, int b){
         // cuello.alfa(op);
+
+        float hcomp, inc;
+        int outputColor;
+        Color rgbcolor=new Color();
+        rgbcolor.rgb(r,g,b);
+        float[] hsv = new float[3];
+        rgbcolor.RGBToHSV(r,g,b,hsv);
+        if (hsv[0]>180) {hcomp=hsv[0]-180;} else {hcomp=180-hsv[0];}
+        inc=(float)(hsv[0]-hcomp)/10f;
+
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         mandibula.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         pelo.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         cejas.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         ojos.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         nariz.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         boca.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         mano_izq.colorize(opacity, r,g,b);;
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         mano_der.colorize(opacity, r,g,b);
+        outputColor = Color.HSVToColor(hsv);
+        r=Color.red(outputColor);
+        g=Color.green(outputColor);
+        b=Color.blue(outputColor);
+        hsv[0]=hsv[0]-inc;
         aro.colorize(opacity, r,g,b);
     }
 }
