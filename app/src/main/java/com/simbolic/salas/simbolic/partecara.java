@@ -83,7 +83,7 @@ public class partecara {
     public void dibujar(Canvas canvas) {
 
 
-        
+
         drawable.draw(canvas);
 
     }
@@ -92,11 +92,11 @@ public class partecara {
         drawable.setAlpha(opacity);
     }
 
-    public void colorize(int r, int g, int b) {
+    public void colorize(int opacity, int r, int g, int b) {
         Color color = new Color();
 
 
-        drawable.setColorFilter(color.argb(255, r, g, b), PorterDuff.Mode.MULTIPLY);
+        drawable.setColorFilter(color.argb(opacity, r, g, b), PorterDuff.Mode.MULTIPLY);
 
     }
 }

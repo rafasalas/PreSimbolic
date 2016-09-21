@@ -89,4 +89,16 @@ public class cara {
         mano_der.alfa(op);
         aro.alfa(op);
     }
+    public void colorize(int opacity, int r, int g, int b){
+        // cuello.alfa(op);
+        mandibula.colorize(opacity, r,g,b);
+        pelo.colorize(opacity, r,g,b);
+        cejas.colorize(opacity, r,g,b);
+        ojos.colorize(opacity, r,g,b);
+        nariz.colorize(opacity, r,g,b);
+        boca.colorize(opacity, r,g,b);
+        mano_izq.colorize(opacity, r,g,b);;
+        mano_der.colorize(opacity, r,g,b);
+        aro.colorize(opacity, r,g,b);
+    }
 }
