@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Simbolic.iml" filepath="$PROJECT_DIR$/Simbolic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rafalib/rafalib.iml" filepath="$PROJECT_DIR$/rafalib/rafalib.iml" />
     </modules>
   </component>
 </project>

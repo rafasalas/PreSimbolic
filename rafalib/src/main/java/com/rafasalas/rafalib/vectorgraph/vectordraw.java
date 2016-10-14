@@ -1,25 +1,26 @@
-package com.simbolic.salas.simbolic;
+package com.rafasalas.rafalib.vectorgraph;
+
+/**
+ * Created by salas on 27/09/2016.
+ */
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.VectorDrawable;
 
-/**
- * Created by salas on 26/07/2016.
- */
-public class partecara {
-    VectorDrawable drawable;
-    Context context;
-    int draw_height, draw_width;
-    Rect superficie;
-    Resources res;
 
-    public partecara(Context context) {
+public class vectordraw {
+   public VectorDrawable drawable;
+    public Context context;
+    public int draw_height, draw_width;
+    public Rect superficie;
+    public Resources res;
+
+    public vectordraw(Context context) {
         res = context.getResources();
 
         superficie = new Rect();
@@ -39,6 +40,7 @@ public class partecara {
 
 
     public void resize(int width, int height, double scale) {
+        //Scales from the size of the screen, and positioning in center of screen
         double mainX, mainY, newW, newH;
 
         draw_height = drawable.getIntrinsicHeight();
@@ -60,6 +62,8 @@ public class partecara {
     }
 
     public void resize(int width, int height, double scale, double Xini, double Yini) {
+
+        //Scales from the size of the screen, and positioning in absolute way
         double mainX, mainY, newW, newH;
 
         draw_height = drawable.getIntrinsicHeight();
@@ -73,6 +77,30 @@ public class partecara {
 
         newH = rel * draw_height;
         mainY = Yini * width;
+        newH = newH + mainY;
+        superficie.set((int) mainX, (int) mainY, (int) newW, (int) (newH));
+        drawable.setBounds(superficie);
+
+
+    }
+
+
+    public void resize(double scale, double Xini, double Yini) {
+
+        //Scales from the size of the graph, and positioning in absolute way
+        double mainX, mainY, newW, newH;
+
+        draw_height = drawable.getIntrinsicHeight();
+        draw_width = drawable.getIntrinsicWidth();
+
+        newW =draw_width * scale;
+        mainX = Xini ;
+        float rel = ((float) newW / (float) draw_width);
+        newW = newW + mainX;
+
+
+        newH = rel * draw_height;
+        mainY = Yini ;
         newH = newH + mainY;
         superficie.set((int) mainX, (int) mainY, (int) newW, (int) (newH));
         drawable.setBounds(superficie);

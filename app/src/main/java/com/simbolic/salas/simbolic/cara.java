@@ -4,24 +4,26 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
-
+import com.rafasalas.rafalib.vectorgraph.vectordraw;
 import java.util.Random;
 
 /**
  * Created by salas on 27/07/2016.
  */
 public class cara {
-    partecara pelo,cejas,ojos, nariz, boca, mandibula, mano_izq, mano_der, aro;
+    //partecara pelo,cejas,ojos, nariz, boca, mandibula, mano_izq, mano_der, aro;
+    vectordraw pelo,cejas,ojos, nariz, boca, mandibula, mano_izq, mano_der, aro, aro2;
     public cara(Context context){
-        pelo=new partecara(context);
-        cejas=new partecara(context);
-        ojos=new partecara(context);
-        nariz=new partecara(context);
-        boca=new partecara(context);
-        mandibula=new partecara(context);
-        mano_izq=new partecara(context);
-        mano_der=new partecara(context);
-       aro=new partecara(context);
+        pelo=new vectordraw(context);
+        cejas=new vectordraw(context);
+        ojos=new vectordraw(context);
+        nariz=new vectordraw(context);
+        boca=new vectordraw(context);
+        mandibula=new vectordraw(context);
+        mano_izq=new vectordraw(context);
+        mano_der=new vectordraw(context);
+       aro=new vectordraw(context);
+        aro2=new vectordraw(context);
     }
 
     public void resize (int width, int height, double scale){
@@ -40,6 +42,7 @@ public class cara {
         mano_izq.resize(width, height,scale);
        mano_der.resize(width, height,scale);
       aro.resize(width, height,scale);
+        aro2.resize(width, height,scale);
 
     }
 
@@ -48,25 +51,26 @@ public class cara {
 
         //Log.v("nombre", "hair_"+ Integer.toString(rnd.nextInt(5)));
 
-        pelo.loadsvg("hair_"+ Integer.toString(rnd.nextInt(9)));
+        pelo.loadsvg("hair_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
 
-        cejas.loadsvg("eyebrow_"+ Integer.toString(rnd.nextInt(9)));
+        cejas.loadsvg("eyebrow_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
 
-        ojos.loadsvg("eye_"+ Integer.toString(rnd.nextInt(9)));
+        ojos.loadsvg("eye_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
 
-        nariz.loadsvg("nose_"+ Integer.toString(rnd.nextInt(9)));
+        nariz.loadsvg("nose_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
 
-        boca.loadsvg("mouth_"+ Integer.toString(rnd.nextInt(9)));
+        boca.loadsvg("mouth_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
 
-        mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(9)));
-        mano_der.loadsvg("hand_right_"+ Integer.toString(rnd.nextInt(3)));
-        mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(3)));
-       aro.loadsvg("aro");
+        mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
+        mano_der.loadsvg("hand_right_"+ Integer.toString(rnd.nextInt(3)), "drawable", "com.simbolic.salas.simbolic");
+        mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(3)), "drawable", "com.simbolic.salas.simbolic");
+       aro.loadsvg("aro", "drawable", "com.simbolic.salas.simbolic");
+        aro2.loadsvg("aro2", "drawable", "com.simbolic.salas.simbolic");
     }
 
     public void dibujar(Canvas canvas){
 
-
+        aro2.dibujar(canvas);
         mandibula.dibujar(canvas);
         pelo.dibujar(canvas);
         cejas.dibujar(canvas);
@@ -81,14 +85,16 @@ public class cara {
     public void alfa(int op){
        // cuello.alfa(op);
         mandibula.alfa(op);
-        pelo.alfa(op);
+
         cejas.alfa(op);
         ojos.alfa(op);
         nariz.alfa(op);
         boca.alfa(op);
         mano_izq.alfa(op);
         mano_der.alfa(op);
+        pelo.alfa(op);
         aro.alfa(op);
+        aro2.alfa(op);
     }
     public void colorize(int opacity, int r, int g, int b){
         // cuello.alfa(op);
