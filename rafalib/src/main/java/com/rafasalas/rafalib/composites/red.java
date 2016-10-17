@@ -61,9 +61,10 @@ public class red {
     }
     public void masa_aleatoria(int limite) {
         Random rnd = new Random();
+
         for (int i = 0; i < vertice.size(); i++) {
             particulasimple vert = vertice.get(i);
-            vert.masa = rnd.nextInt(limite);
+            vert.masa = rnd.nextInt(limite-20)+20;
 
         }
     }

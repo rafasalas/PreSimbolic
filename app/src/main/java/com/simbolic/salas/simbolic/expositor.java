@@ -38,16 +38,16 @@ public class expositor extends View {
     int contador,opacidad, intervalo, transicion, incremento;
     public expositor(Context context){
             super(context);
-        width=getWidth();
-        height=getHeight();
+        int width =context.getResources().getDisplayMetrics().widthPixels;
+        int height = context.getResources().getDisplayMetrics().heightPixels;
         Random rnd=new Random();
         String mensaje;
         Cara1=new cara(context);
         Globo=new vectordraw (context);
         Mensaje=new mensaje(context);
 
-        fondo=new red(-200,-100,10,10,180,150,true, 100,context);
-
+      // fondo=new red(-200,-100,10,10,180,150,true, 100,context);
+        fondo=new red(-width/5,-height/10,10,10,width/5,height/10,true, height/10,context);
         //fondo.carga_dibujo ("geo", "drawable", "com.simbolic.salas.simbolic");
         fondo.rozamiento((float)0.0015);
         fondo.muelle((float)0.0075);
