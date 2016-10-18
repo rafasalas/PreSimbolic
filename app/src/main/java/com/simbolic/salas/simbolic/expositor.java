@@ -11,6 +11,10 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.util.Log;
 import android.view.View;
 
@@ -18,12 +22,14 @@ import com.rafasalas.rafalib.composites.red;
 import com.rafasalas.rafalib.vectorgraph.vectordraw;
 import java.util.Random;
 
+import processing.core.PVector;
+
 /**
  * Created by salas on 20/07/2016.
  */
 
 
-public class expositor extends View {
+public class expositor extends View implements SensorEventListener {
             vectordraw Globo;
             mensaje Mensaje;
             cara Cara1;
@@ -33,11 +39,24 @@ public class expositor extends View {
             //Color Temporal
             red fondo;
            int width, height;
-
-
+    //Variables acelerometro
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private float mSensorX;
+    private float mSensorY;
+    private float mSensorZ;
+    private PVector gravedad;
     int contador,opacidad, intervalo, transicion, incremento;
     public expositor(Context context){
             super(context);
+
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        //cuidadin
+        registerSensors();
+        //cuidadin
+
         int width =context.getResources().getDisplayMetrics().widthPixels;
         int height = context.getResources().getDisplayMetrics().heightPixels;
         Random rnd=new Random();
@@ -49,8 +68,9 @@ public class expositor extends View {
       // fondo=new red(-200,-100,10,10,180,150,true, 100,context);
         fondo=new red(-width/5,-height/10,10,10,width/5,height/10,true, height/10,context);
         //fondo.carga_dibujo ("geo", "drawable", "com.simbolic.salas.simbolic");
-        fondo.rozamiento((float)0.0015);
-        fondo.muelle((float)0.0075);
+        fondo.rozamiento((float)0.015);
+        fondo.muelle((float)0.05);
+        //fondo.cuerda(50);
         fondo.invertir_masa();
 
         Cara1.carga();
@@ -58,7 +78,7 @@ public class expositor extends View {
         Mensaje.carga(mensaje);
         fondo.carga_dibujo (mensaje, "drawable", "com.simbolic.salas.simbolic");
         opacidad=0;
-
+        fondo.alfa(200);
 
 
         Globo.loadsvg("globo_1");
@@ -73,9 +93,52 @@ public class expositor extends View {
          g=rnd.nextInt(255);
          b=rnd.nextInt(255);
         Color color = new Color();
-
+        gravedad=new PVector(0,0);
 
     }
+    //acelerometro
+    //funciones acelerometro
+    public void registerSensors() {
+       // Log.d("sensor", "registerSensors()");
+        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+    }
+
+    public void unregisterSensors() {
+        Log.d("sensor", "unregisterSensors()");
+        mSensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
+            return;
+        mSensorX = event.values[0];
+        mSensorY = event.values[1];
+        mSensorZ = event.values[2];
+        if (mSensorZ>10){mSensorZ=10;}
+        gravedad.set(-mSensorX,mSensorY);
+        gravedad.normalize();
+        gravedad.mult((10-mSensorZ));
+
+
+        //Log.d("sensor", "X: " + mSensorX + ", Y: " + mSensorY + ", Z: " + mSensorZ);
+        // Log.d("Vector", "X: " + gravedad.x + ", Y: " + gravedad.y);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+
+    //acelerometro
+
+
+
+
+
+
+
     @Override
 
     protected void onDraw(Canvas canvas){
@@ -121,7 +184,9 @@ public class expositor extends View {
         Globo.alfa(opacidad);
         Mensaje.alfa(opacidad);
         canvas.drawPaint(fondopaint);
-        fondo.mostrar_dibujo(canvas, 7);
+        fondo.acelerar(gravedad);
+        fondo.alfa(100);
+        fondo.mostrar_dibujo(canvas, 5);
         Cara1.dibujar(canvas);
         Globo.dibujar(canvas);
         Mensaje.dibujar(canvas);
@@ -132,5 +197,6 @@ public class expositor extends View {
    protected void update(){
 
    }
+
 
 }

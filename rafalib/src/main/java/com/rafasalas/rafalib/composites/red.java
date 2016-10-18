@@ -84,6 +84,13 @@ public class red {
             vert.kmuelle = elastico;
         }
     }
+    public void cuerda (float longitud) {
+        for (int i = 0; i < vertice.size(); i++) {
+            particulasimple vert = vertice.get(i);
+            vert.cuerda = true;
+            vert.coto = longitud;
+        }
+    }
     public void carga_dibujo (String nombre, String carpeta, String paquete){
         for (int i = 0; i < vertice.size(); i++) {
             particulasimple vert = vertice.get(i);
@@ -134,6 +141,13 @@ public void acelerar(Atractor atractor){
         for (int i = 0; i < vertice.size(); i++) {
             particulasimple vert = vertice.get(i);
             vert.colorize_dibujo(a,r,g,b);
+
+        }
+    }
+    public void alfa(int a) {
+        for (int i = 0; i < vertice.size(); i++) {
+            particulasimple vert = vertice.get(i);
+            vert.alfa(a);
 
         }
     }

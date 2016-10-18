@@ -58,14 +58,12 @@ public class Mat_point {
             aceleracion.add(recuperacion);
 
         }
-        if (cuerda){
-            float d=ancla.dist(posicion);
-            if(d>coto){velocidad.x=0;velocidad.y=0;}
-        }
+
     }
 
     public void actualizar() {
         if (eterna==true){lifespan--;}
+        PVector oldposicion=new PVector (posicion.x, posicion.y);
        // posicion.add(velocidad);
         if (resistencia) {
             PVector friccion=new PVector(velocidad.x,velocidad.y);
@@ -82,6 +80,7 @@ public class Mat_point {
 
         posicion.add(velocidad);
         aceleracion.mult(0);
+
         if(boxed){   if (posicion.x > limitx ) {
             velocidad.x = velocidad.x*-1;
             posicion.x=limitx;
@@ -98,7 +97,15 @@ public class Mat_point {
                 velocidad.y = velocidad.y*-1;
                 posicion.y=0;
             }
-        }}
+        }
+        if (cuerda){
+            float d=ancla.dist(posicion);
+            if(d>coto){posicion.set(oldposicion);}
+        }
+
+
+
+    }
 
 
     public boolean muerta(){if (lifespan<0){return true;}else {return false;}}

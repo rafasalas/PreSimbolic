@@ -81,6 +81,12 @@ public void carga_dibujo (String nombre, String carpeta, String paquete){
         dibujo.colorize(opacity,r,g,b);
 
     }
+    public void alfa(int opacity) {
 
+
+
+        dibujo.alfa(opacity);
+
+    }
 
 }
