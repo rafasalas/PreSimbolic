@@ -68,8 +68,8 @@ public class expositor extends View implements SensorEventListener {
       // fondo=new red(-200,-100,10,10,180,150,true, 100,context);
         fondo=new red(-width/5,-height/10,10,10,width/5,height/10,true, height/10,context);
         //fondo.carga_dibujo ("geo", "drawable", "com.simbolic.salas.simbolic");
-        fondo.rozamiento((float)0.015);
-        fondo.muelle((float)0.05);
+        fondo.rozamiento((float)0.02);
+        fondo.muelle((float)0.005);
         //fondo.cuerda(50);
         fondo.invertir_masa();
 
@@ -175,20 +175,20 @@ public class expositor extends View implements SensorEventListener {
         );
 
        // canvas.drawColor(0xFFFFFFFF);
-        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, 0xff555555, Shader.TileMode.MIRROR));
+        fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xff5881c0,0xff343a7e, Shader.TileMode.MIRROR));
         //fondopaint.setShader(new RadialGradient(width / 2, height / 2, width , 0xffffffff, color.argb(opacidad,r,g,b), Shader.TileMode.MIRROR));
-        //Cara1.alfa(opacidad);
-        //Globo.alfa(opacidad);
-        //Mensaje.alfa(opacidad);
+        Cara1.alfa(opacidad);
+
         //Cara1.colorize(opacidad, r,g,b);
         Globo.alfa(opacidad);
-        Mensaje.alfa(opacidad);
+
         canvas.drawPaint(fondopaint);
         fondo.acelerar(gravedad);
         fondo.alfa(100);
         fondo.mostrar_dibujo(canvas, 5);
         Cara1.dibujar(canvas);
         Globo.dibujar(canvas);
+        Mensaje.alfa(opacidad);
         Mensaje.dibujar(canvas);
         update();
         invalidate();
