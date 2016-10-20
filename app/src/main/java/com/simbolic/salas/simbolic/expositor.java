@@ -68,8 +68,8 @@ public class expositor extends View implements SensorEventListener {
       // fondo=new red(-200,-100,10,10,180,150,true, 100,context);
         fondo=new red(-width/5,-height/10,10,10,width/5,height/10,true, height/10,context);
         //fondo.carga_dibujo ("geo", "drawable", "com.simbolic.salas.simbolic");
-        fondo.rozamiento((float)0.02);
-        fondo.muelle((float)0.005);
+        fondo.rozamiento((float)0.009);
+        fondo.muelle((float)0.01);
         //fondo.cuerda(50);
         fondo.invertir_masa();
 
@@ -78,7 +78,7 @@ public class expositor extends View implements SensorEventListener {
         Mensaje.carga(mensaje);
         fondo.carga_dibujo (mensaje, "drawable", "com.simbolic.salas.simbolic");
         opacidad=0;
-        fondo.alfa(200);
+        fondo.alfa(100);
 
 
         Globo.loadsvg("globo_1");
@@ -185,7 +185,7 @@ public class expositor extends View implements SensorEventListener {
         canvas.drawPaint(fondopaint);
         fondo.acelerar(gravedad);
         fondo.alfa(100);
-        fondo.mostrar_dibujo(canvas, 5);
+        fondo.mostrar_dibujo(canvas, width/85);
         Cara1.dibujar(canvas);
         Globo.dibujar(canvas);
         Mensaje.alfa(opacidad);

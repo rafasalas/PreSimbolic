@@ -64,12 +64,13 @@ public class cara {
         mandibula.loadsvg("faces_"+ Integer.toString(rnd.nextInt(9)), "drawable", "com.simbolic.salas.simbolic");
         mano_der.loadsvg("hand_right_"+ Integer.toString(rnd.nextInt(3)), "drawable", "com.simbolic.salas.simbolic");
         mano_izq.loadsvg("hand_left_"+ Integer.toString(rnd.nextInt(3)), "drawable", "com.simbolic.salas.simbolic");
-       aro.loadsvg("aro", "drawable", "com.simbolic.salas.simbolic");
-        aro2.loadsvg("aro2", "drawable", "com.simbolic.salas.simbolic");
+       aro.loadsvg("aro2", "drawable", "com.simbolic.salas.simbolic");
+        aro2.loadsvg("arob", "drawable", "com.simbolic.salas.simbolic");
     }
 
     public void dibujar(Canvas canvas){
-
+        aro.colorize(255, 255,195,0);
+        aro2.alfa(150);
         aro2.dibujar(canvas);
         mandibula.dibujar(canvas);
         pelo.dibujar(canvas);
@@ -93,8 +94,8 @@ public class cara {
         mano_izq.alfa(op);
         mano_der.alfa(op);
         pelo.alfa(op);
-        aro.alfa(op);
-        aro2.alfa(op);
+        //aro.alfa(op);
+        //aro2.alfa(op);
     }
     public void colorize(int opacity, int r, int g, int b){
         // cuello.alfa(op);
